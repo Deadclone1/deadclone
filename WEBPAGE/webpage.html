@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <script>
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            const requirements = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!requirements.test(password)) {
+                alert('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.getElementById('togglePassword');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.innerHTML = '👁️'; // Eye icon for showing password
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.innerHTML = '🙈'; // Eye with a slash for hiding password
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: black;
+            color: gold;
+            text-align: center;
+            margin: 0;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Aligns items to the left */
+            border: 2px solid gold;
+            padding: 10px;
+        }
+        .login-container {
+            border: 2px solid gold;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px; /* Rounded corners */
+            display: inline-block; /* Center the login box */
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        img {
+            width: 150px; /* Set image width */
+            height: auto; /* Keep aspect ratio */
+            margin-right: 20px; /* Space between image and heading */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="gram.png" alt="Grambling State University Badge">
+        <h1>Welcome to My Website</h1>
+    </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form onsubmit="return validatePassword();">
+            <label for="username" style="color: gold;">Username:</label><br>
+            <input type="text" id="username" name="username" required style="padding: 5px;"><br><br>
+            <label for="password" style="color: gold;">Password:</label><br>
+            <input type="password" id="password" name="password" required style="padding: 5px;">
+            <button type="button" id="togglePassword" onclick="togglePasswordVisibility();" style="border: none; background: none; cursor: pointer;">🙈</button>
+            <p>Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.</p>
+            <br>
+            <input type="submit" value="Login" style="background-color: gold; color: black; padding: 5px 10px; border: none; cursor: pointer;">
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

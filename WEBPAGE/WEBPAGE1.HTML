@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <script>
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            const requirements = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!requirements.test(password)) {
+                alert('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.getElementById('togglePassword');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.innerHTML = '👁️'; // Eye icon for showing password
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.innerHTML = '🙈'; // Eye with a slash for hiding password
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black; /* Overall background color */
+        }
+        .header {
+            background-color: black; /* Set header background to black */
+            height: 100px;
+            color: gold;
+            text-align: center;
+            position: relative;
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            height: 80px; /* Adjust size as needed */
+        }
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px);
+        }
+        .login-form {
+            background-color: black; /* Background for the form */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: gold; /* Button color */
+            color: black;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            margin: 10px 0;
+            color: gold; /* Footer text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="C:\Users\ranks\Desktop\WEBPAGE\gram.png" alt="Grambling State University Badge" class="badge">
+        <h1 style="margin: 0;">Welcome to My Website</h1>
+    </div>
+    <div class="login-container">
+        <div class="login-form">
+            <form onsubmit="return validatePassword();">
+                <label for="username" style="color: gold;">Username:</label><br>
+                <input type="text" id="username" name="username" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"><br><br>
+                <label for="password" style="color: gold;">Password:</label><br>
+                <input type="password" id="password" name="password" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <button type="button" id="togglePassword" onclick="togglePasswordVisibility();" style="margin-left: 5px; border: none; background: none; cursor: pointer;">🙈</button>
+                <p style="font-size: 12px; color: gray;">
+                    Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+                </p>
+                <br>
+                <input type="submit" value="Login" class="login-button">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
